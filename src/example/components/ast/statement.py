@@ -14,19 +14,26 @@ class Operations(Enum):
     AND = 0
     OR = 1
 
+# base class
 class Expression(ABC): 
-    @abstractmethod
     def __init__(self) -> None:
-        self.signature:str = ""
-        self.value:int = None
-        pass
+        self.signature: str = ""
+        self.value: bool = None
 
     @abstractmethod
     def run(self) -> None:
         pass
+    
+    # Prefix notation/expression structure (tree)
+    @abstractmethod
+    def prefix(self):
+        pass
 
 class Expression_logic(Expression):
+    
     def __init__(self, operation:Operations, parameter1:Expression, parameter2:Expression):
+        super().__init__() # Runs the base class's constructor (__init__)
+
         # Init attribute - storing operation and params
         self.operation:Operations = operation       
         self.parameter1:Expression = parameter1
@@ -37,6 +44,14 @@ class Expression_logic(Expression):
 
         # Create a children
         self.children = [self.parameter1, self.parameter2]
+
+    # Binary node
+    def prefix(self):
+        return (
+            f"{self.operation.name} "
+            f"{self.parameter1.prefix()} "
+            f"{self.parameter2.prefix()}"
+        )
         
     def run(self) -> None:
         # evaluate child first
@@ -51,7 +66,7 @@ class Expression_logic(Expression):
         else:
             raise ValueError(f"{self.operation=} is not supported.")
         
-        # Prefix output
+        # Final result (Prefix format)
         self.signature = (
             f"Expression: "
             f"{self.operation.name} "
@@ -68,6 +83,10 @@ class Expression_bool(Expression):
     def __init__(self, value: bool) -> None:
         self.value:bool = value
         self.signature:str= str(value)
+
+    # Leaf node
+    def prefix(self):
+        return str(self.value)
         
     def run(self) -> None:
         print(self)
@@ -78,7 +97,6 @@ class Expression_bool(Expression):
 if __name__ == "__main__":
     bool1 = Expression_bool(True) # Create True obj
     bool2 = Expression_bool(False) # Create False obj
-    # TODO: change expression logic
-    expr = Expression_math(Operations.MINUS, parameter1=number1, parameter2=number2)
+    expr = Expression_logic(Operations.AND, bool1, bool2)
     expr.run()
     print(expr.value)
