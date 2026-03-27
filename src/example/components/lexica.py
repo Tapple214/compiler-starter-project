@@ -15,7 +15,7 @@ class MyLexer(Lexer):
     # set `tokens` so it can be used in the parser.
     # This must be here and all Capitalized. 
     # Please, ignore IDE warning.
-    tokens = { ASSIGN, NAME, NUMBER, MINUS, DIVIDE, TIMES, LPAREN, RPAREN}
+    tokens = { TRUE, FALSE, AND, OR}
     
     # https://sly.readthedocs.io/en/latest/sly.html#literal-characters
     literals = { '+' }
@@ -38,14 +38,11 @@ class MyLexer(Lexer):
         print(f"====This print from NUMBER function: {token.type=} {token.value=} {type(token.value)=}")
         return token
 
-    # Try uncomment this and run to see the differences between `token` and `literal`
-    ASSIGN  = r'\='
-    # PLUS    = r'\+'
-    MINUS   = r'-'
-    TIMES   = r'\*'
-    DIVIDE  = r'/'
-    LPAREN  = r'\('
-    RPAREN  = r'\)'
+
+    TRUE = r't'
+    FALSE = r'f'
+    AND = r'∧'
+    OR = r'∨'
 
     # Extra action for newlines
     @_(r'\n+')
