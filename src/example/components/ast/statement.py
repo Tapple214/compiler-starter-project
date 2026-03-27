@@ -63,21 +63,21 @@ class Expression_math(Expression):
     def __repr__(self) -> str:
         return self.signature
 
-class Expression_number(Expression):
-    def __init__(self, number:int) -> None:
-        self.value:int = number
-        self.signature:str= str(number)
+class Expression_bool(Expression):
+    def __init__(self, value: bool) -> None:
+        self.value:bool = value
+        self.signature:str= str(value)
         
     def run(self) -> None:
         print(self)
 
     def __repr__(self) -> str:
-        return f"Expression_number:{self.signature}"
+        return f"Expression_bool:{self.signature}"
 
 if __name__ == "__main__":
-    number1 = Expression_number(number=8)
-    number2 = Expression_number(number=9)
+    bool1 = Expression_bool(True) # Create True obj
+    bool2 = Expression_bool(False) # Create False obj
+    # TODO: change expression logic
     expr = Expression_math(Operations.MINUS, parameter1=number1, parameter2=number2)
     expr.run()
-    # print(expr.hshow())
     print(expr.value)
