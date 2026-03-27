@@ -9,12 +9,10 @@ class Statement:
     def __init__(self) -> None:
         root_node
         
-
+# Unique identifiers
 class Operations(Enum):
-    PLUS:int=0
-    MINUS:int=1
-    TIMES:int=2
-    DIVIDE:int=3
+    AND = 0
+    OR = 1
 
 class Expression(ABC): 
     @abstractmethod
