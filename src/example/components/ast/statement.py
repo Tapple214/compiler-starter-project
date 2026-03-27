@@ -25,14 +25,13 @@ class Expression(ABC):
     def run(self) -> None:
         pass
 
-class Expression_math(Expression):
+class Expression_logic(Expression):
     def __init__(self, operation:Operations, parameter1:Expression, parameter2:Expression):
-        # Init attribute
-        self.operation:Operations = operation
+        # Init attribute - storing operation and params
+        self.operation:Operations = operation       
         self.parameter1:Expression = parameter1
         self.parameter2:Expression = parameter2
-        self.signature:str = ""
-        self.value:int = None
+        self.value:bool = None
         # Checking Logic
         assert operation in Operations
 
@@ -43,21 +42,23 @@ class Expression_math(Expression):
         # evaluate child first
         for child in self.children:
             child.run()
-            # print(child)
+            print(child)
 
-        # print(f"Calculating: {self.operation.name=} {self.parameter1=} {self.parameter2=}")
-        if(self.operation == Operations.PLUS):
-            self.value = self.parameter1.value + self.parameter2.value
-        elif(self.operation == Operations.MINUS):
-            self.value = self.parameter1.value - self.parameter2.value
-        elif(self.operation == Operations.TIMES):
-            self.value = self.parameter1.value * self.parameter2.value
-        elif(self.operation == Operations.DIVIDE):
-            self.value = self.parameter1.value / self.parameter2.value
+        if(self.operation == Operations.AND):
+            self.value = self.parameter1.value and self.parameter2.value
+        elif(self.operation == Operations.OR):
+            self.value = self.parameter1.value or self.parameter2.value
         else:
-            raise ValueError(f"{self.operation=} is not support. Please use class Statement.Operations. Actually, this should not happen.")
+            raise ValueError(f"{self.operation=} is not supported.")
         
-        self.signature = f"Expression: {self.operation.name} {self.parameter1.value} {self.parameter2.value}"
+        # Prefix output
+        self.signature = (
+            f"Expression: "
+            f"{self.operation.name} "
+            f"{self.parameter1.value} "
+            f"{self.parameter2.value}"
+        )
+
         print(self)
 
     def __repr__(self) -> str:
