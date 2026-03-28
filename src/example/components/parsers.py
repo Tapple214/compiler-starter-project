@@ -81,9 +81,6 @@ class ASTParser(Parser):
         ('left', AND), # higher priority
         )
 
-#   AND = r'∧'
-#     OR = r'∨'
-
     @_('expr')
     def statement(self, p) -> int:
         p.expr.run()
