@@ -15,7 +15,7 @@ class MyLexer(Lexer):
     # set `tokens` so it can be used in the parser.
     # This must be here and all Capitalized. 
     # Please, ignore IDE warning.
-    tokens = { TRUE, FALSE, AND, OR, NAME}
+    tokens = { TRUE, FALSE, AND, OR}
     
     # https://sly.readthedocs.io/en/latest/sly.html#literal-characters
     ### matching rule ###
@@ -25,23 +25,10 @@ class MyLexer(Lexer):
     # Ignore spaces and tabs 
     ignore = ' \t'
 
-    ### EX1: simply define with regEX ###
-    ### EX2: Define as a function ###
-    # TODO: remove after completion
-    # @_(r'\d+')
-    # def NUMBER(self, token):
-    #     # Note that this function set parse token.value to integer
-    #     token.value = int(token.value)
-    #     # Extra print for debug
-    #     print(f"====This print from NUMBER function: {token.type=} {token.value=} {type(token.value)=}")
-    #     return token
-
-
     TRUE = r't'
     FALSE = r'f'
     AND = r'∧'
     OR = r'∨'
-    NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
     # Extra action for newlines
     @_(r'\n+')
@@ -55,7 +42,7 @@ class MyLexer(Lexer):
 
 if __name__ == '__main__':
     # Write a simple test that only run when you execute this file
-    string_input:str = "x1 + 1as! * ()"
+    string_input:str = "t ∨ f ∧ f"
     lex:Lexer = MyLexer()
     # assign type to `token`
     token: sly.lex.Token
