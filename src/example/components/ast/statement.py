@@ -57,19 +57,23 @@ class Expression_logic(Expression):
             f"{self.parameter2.prefix()}"
         )
 
-    def tree_str(self, prefix="") -> str:
-            lines = []
-            lines.append(f"{prefix}{self.operation.name}")  # Current node
-            
-            # Determine prefix for children
-            child_prefix = prefix + "│  "
-            
-            # Left child (use ├─)
-            lines.append(self.parameter1.tree_str(prefix + "├─"))
-            # Right child (use └─)
-            lines.append(self.parameter2.tree_str(prefix + "└─"))
-            
-            return "\n".join(lines)
+    def tree_str(self, prefix="", is_last=True) -> str:
+        """Return tree as string with ├─ and └─."""
+        lines = []
+        connector = "└─" if is_last else "├─"
+        lines.append(f"{prefix}{connector}{self.operation.name}")
+
+        # Prepare prefix for children
+        if is_last:
+            child_prefix = prefix + "   "  # No vertical line, last child
+        else:
+            child_prefix = prefix + "│  "  # Show vertical line for siblings
+
+        # Left child is never the last if right child exists
+        lines.append(self.parameter1.tree_str(child_prefix, is_last=False))
+        lines.append(self.parameter2.tree_str(child_prefix, is_last=True))
+
+        return "\n".join(lines)
         
     def run(self) -> None:
         # evaluate child first
@@ -100,8 +104,9 @@ class Expression_bool(Expression):
     def prefix(self):
         return str(self.value)
 
-    def tree_str(self, prefix="") -> str:
-        return f"{prefix}{self.value}"
+    def tree_str(self, prefix="", is_last=True) -> str:
+        connector = "└─" if is_last else "├─"
+        return f"{prefix}{connector}{self.value}"
         
     def run(self) -> None:
         print(self)
