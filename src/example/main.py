@@ -50,8 +50,8 @@ class MainWindow(QMainWindow):
         memory = Memory()
         input_text = self.ui.input_text.text()
 
-         # Parse input → returns AST object
-        expr = parser.parse(lexer.tokenize(input_text))  # expr is now Expression_logic or Expression_bool
+        # returns AST object
+        expr = parser.parse(lexer.tokenize(input_text))
 
         if expr is None:
             self.ui.label_eval.setText("Error")
