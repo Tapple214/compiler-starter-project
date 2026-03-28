@@ -15,11 +15,9 @@ class MyLexer(Lexer):
     # set `tokens` so it can be used in the parser.
     # This must be here and all Capitalized. 
     # Please, ignore IDE warning.
-    tokens = { TRUE, FALSE, AND, OR}
+    tokens = { TRUE, FALSE, AND, OR, NAME}
     
     # https://sly.readthedocs.io/en/latest/sly.html#literal-characters
-    literals = { '+' }
-    
     ### matching rule ###
     # The matching work from top to bottom
     # At least, all toekns must be defined here
@@ -30,13 +28,14 @@ class MyLexer(Lexer):
     ### EX1: simply define with regEX ###
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
     ### EX2: Define as a function ###
-    @_(r'\d+')
-    def NUMBER(self, token):
-        # Note that this function set parse token.value to integer
-        token.value = int(token.value)
-        # Extra print for debug
-        print(f"====This print from NUMBER function: {token.type=} {token.value=} {type(token.value)=}")
-        return token
+    # TODO: remove after completion
+    # @_(r'\d+')
+    # def NUMBER(self, token):
+    #     # Note that this function set parse token.value to integer
+    #     token.value = int(token.value)
+    #     # Extra print for debug
+    #     print(f"====This print from NUMBER function: {token.type=} {token.value=} {type(token.value)=}")
+    #     return token
 
 
     TRUE = r't'
