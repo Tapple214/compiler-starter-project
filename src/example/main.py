@@ -51,7 +51,9 @@ class MainWindow(QMainWindow):
         input_text = self.ui.input_text.text()
         result = parser.parse(lexer.tokenize(input_text))
         print(type(result))
-        self.ui.output_lcd.display(result)
+        self.ui.label_eval.setText(str(result))
+        self.ui.label_trans.setText(str(result))
+        self.ui.label_tree.setText(str(result))
         # for debug
         print(memory)
 
