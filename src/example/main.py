@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):
         self.ui.button_t.clicked.connect(lambda: self.push("t"))
         self.ui.button_f.clicked.connect(lambda: self.push("f"))
         self.ui.button_and.clicked.connect(lambda: self.push("∧"))
-        self.ui.button_and.clicked.connect(lambda: self.push("∨"))
+        self.ui.button_or.clicked.connect(lambda: self.push("∨"))
 
         self.ui.button_equal.clicked.connect(self.push_equal)
 
