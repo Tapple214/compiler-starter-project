@@ -15,7 +15,7 @@ class MyLexer(Lexer):
     # set `tokens` so it can be used in the parser.
     # This must be here and all Capitalized. 
     # Please, ignore IDE warning.
-    tokens = { TRUE, FALSE, AND, OR}
+    tokens = { TRUE, FALSE, AND, OR }
     
     # https://sly.readthedocs.io/en/latest/sly.html#literal-characters
     ### matching rule ###
