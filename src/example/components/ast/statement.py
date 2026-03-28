@@ -3,16 +3,16 @@ from abc import ABC, abstractmethod
 
 class Statement:
     """What is statement?
-    In this calculator project, a statement is each line of math expression.
-    In this case, it will consit of tree of math expression
+    In this calculator project, a statement is each line of expression.
+    In this case, it will consist of tree of expression
     """
     def __init__(self) -> None:
         root_node
         
 # Unique identifiers
 class Operations(Enum):
-    AND = 0
-    OR = 1
+    AND = "∧"
+    OR = "∨"
 
 # base class
 class Expression(ABC): 
@@ -24,11 +24,12 @@ class Expression(ABC):
     def run(self) -> None:
         pass
 
+    # Tree structure
     @abstractmethod
     def tree_str(self, prefix="") -> str:
         pass
     
-    # Prefix notation/expression structure (tree)
+    # Prefix notation/expression structure 
     @abstractmethod
     def prefix(self):
         pass
@@ -49,13 +50,15 @@ class Expression_logic(Expression):
         # Create a children
         self.children = [self.parameter1, self.parameter2]
 
-    # Binary node
+    # Binary node - Prefix notation/expression
     def prefix(self):
+        """Return prefix notation of expression"""
         return (
             f"{self.operation.name} "
             f"{self.parameter1.prefix()} "
             f"{self.parameter2.prefix()}"
         )
+
 
     def tree_str(self, prefix="", is_last=True) -> str:
         """Return tree as string with ├─ and └─."""
@@ -102,17 +105,17 @@ class Expression_bool(Expression):
 
     # Leaf node
     def prefix(self):
-        return str(self.value)
+        return "t" if self.value else "f"
 
     def tree_str(self, prefix="", is_last=True) -> str:
         connector = "└─" if is_last else "├─"
-        return f"{prefix}{connector}{self.value}"
+        return f"{prefix}{connector}{'t' if self.value else 'f'}"
         
     def run(self) -> None:
         print(self)
 
     def __repr__(self) -> str:
-        return f"Expression_bool:{self.signature}"
+        return f"Expression_bool:{self.prefix()}"
 
 if __name__ == "__main__":
     bool1 = Expression_bool(True) # Create True obj
