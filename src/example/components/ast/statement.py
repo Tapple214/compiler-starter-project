@@ -54,7 +54,7 @@ class Expression_logic(Expression):
     def prefix(self):
         """Return prefix notation of expression"""
         return (
-            f"{self.operation.name} "
+            f"{self.operation.value} "
             f"{self.parameter1.prefix()} "
             f"{self.parameter2.prefix()}"
         )
@@ -64,7 +64,7 @@ class Expression_logic(Expression):
         """Return tree as string with ├─ and └─."""
         lines = []
         connector = "└─" if is_last else "├─"
-        lines.append(f"{prefix}{connector}{self.operation.name}")
+        lines.append(f"{prefix}{connector}{self.operation.value}")
 
         # Prepare prefix for children
         if is_last:
