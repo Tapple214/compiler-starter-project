@@ -82,9 +82,8 @@ class ASTParser(Parser):
         )
 
     @_('expr')
-    def statement(self, p) -> int:
-        p.expr.run()
-        return p.expr.value
+    def statement(self, p) -> bool:
+        return p.expr
 
     # Grammar Rule - AND
     @_('expr AND expr')
@@ -104,7 +103,7 @@ class ASTParser(Parser):
     # base case - FALSE
     @_('FALSE')
     def expr(self, p) -> bool:
-        return FALSE
+        return False
         
 if __name__ == "__main__":
     lexer = MyLexer()

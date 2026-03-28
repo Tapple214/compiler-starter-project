@@ -26,7 +26,6 @@ class MyLexer(Lexer):
     ignore = ' \t'
 
     ### EX1: simply define with regEX ###
-    NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
     ### EX2: Define as a function ###
     # TODO: remove after completion
     # @_(r'\d+')
@@ -42,6 +41,7 @@ class MyLexer(Lexer):
     FALSE = r'f'
     AND = r'∧'
     OR = r'∨'
+    NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
     # Extra action for newlines
     @_(r'\n+')
