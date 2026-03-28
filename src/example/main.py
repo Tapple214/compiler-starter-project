@@ -65,8 +65,8 @@ class MainWindow(QMainWindow):
         # Update GUI labels
         self.ui.label_eval.setText(str(expr.value))       # Final True/False
         self.ui.label_trans.setText(expr.prefix())        # Prefix or representation
-        self.ui.label_tree.setText(expr.prefix())         # AST tree
-        
+        self.ui.label_tree.setText(expr.tree_str())       # AST tree
+
         # for debug
         print(memory)
 

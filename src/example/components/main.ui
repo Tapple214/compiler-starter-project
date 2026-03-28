@@ -185,7 +185,7 @@
      <enum>QFrame::Shape::NoFrame</enum>
     </property>
     <property name="text">
-     <string> TextLabel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_trans">
@@ -215,7 +215,7 @@
      <enum>QFrame::Shape::NoFrame</enum>
     </property>
     <property name="text">
-     <string> TextLabel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_tree">
@@ -239,10 +239,10 @@
      <string notr="true">background-color: #1c1c1c;</string>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
     <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
     </property>
    </widget>
   </widget>

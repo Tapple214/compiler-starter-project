@@ -23,6 +23,10 @@ class Expression(ABC):
     @abstractmethod
     def run(self) -> None:
         pass
+
+    @abstractmethod
+    def tree_str(self, prefix="") -> str:
+        pass
     
     # Prefix notation/expression structure (tree)
     @abstractmethod
@@ -52,6 +56,20 @@ class Expression_logic(Expression):
             f"{self.parameter1.prefix()} "
             f"{self.parameter2.prefix()}"
         )
+
+    def tree_str(self, prefix="") -> str:
+            lines = []
+            lines.append(f"{prefix}{self.operation.name}")  # Current node
+            
+            # Determine prefix for children
+            child_prefix = prefix + "│  "
+            
+            # Left child (use ├─)
+            lines.append(self.parameter1.tree_str(prefix + "├─"))
+            # Right child (use └─)
+            lines.append(self.parameter2.tree_str(prefix + "└─"))
+            
+            return "\n".join(lines)
         
     def run(self) -> None:
         # evaluate child first
@@ -81,6 +99,9 @@ class Expression_bool(Expression):
     # Leaf node
     def prefix(self):
         return str(self.value)
+
+    def tree_str(self, prefix="") -> str:
+        return f"{prefix}{self.value}"
         
     def run(self) -> None:
         print(self)
