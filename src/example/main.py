@@ -1,7 +1,7 @@
 import sys
 from PySide6 import QtUiTools
 from PySide6.QtWidgets import QApplication
-from PySide6.QtWidgets import QMainWindow, QLineEdit, QPushButton, QLCDNumber
+from PySide6.QtWidgets import QMainWindow, QLineEdit, QPushButton, QLabel
 
 from example.components.lexica import MyLexer
 from example.components.parsers import ASTParser
@@ -20,9 +20,9 @@ class MainWindow(QMainWindow):
 
     input_text:QLineEdit
   
-    output_eval:QLCDLabel # Evaluation ouput
-    output_trans:QLCDLabel # Translation ouput
-    output_tree:QLCDLabel # AST ouput
+    output_eval:QLabel # Evaluation ouput
+    output_trans:QLabel # Translation ouput
+    output_tree:QLabel # AST ouput
 
     def __init__(self):
         super(MainWindow, self).__init__()
