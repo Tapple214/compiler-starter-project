@@ -49,11 +49,24 @@ class MainWindow(QMainWindow):
         parser = ASTParser()
         memory = Memory()
         input_text = self.ui.input_text.text()
-        result = parser.parse(lexer.tokenize(input_text))
-        print(type(result))
-        self.ui.label_eval.setText(str(result))
-        self.ui.label_trans.setText(str(result))
-        self.ui.label_tree.setText(str(result))
+
+         # Parse input → returns AST object
+        expr = parser.parse(lexer.tokenize(input_text))  # expr is now Expression_logic or Expression_bool
+
+        if expr is None:
+            self.ui.label_eval.setText("Error")
+            self.ui.label_trans.setText("Error")
+            self.ui.label_tree.setText("Error")
+            return
+
+        # Run evaluation
+        expr.run()  
+
+        # Update GUI labels
+        self.ui.label_eval.setText(str(expr.value))       # Final True/False
+        self.ui.label_trans.setText(expr.prefix())        # Prefix or representation
+        self.ui.label_tree.setText(expr.prefix())         # AST tree
+        
         # for debug
         print(memory)
 

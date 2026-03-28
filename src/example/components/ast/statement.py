@@ -67,13 +67,7 @@ class Expression_logic(Expression):
             raise ValueError(f"{self.operation=} is not supported.")
         
         # Final result (Prefix format)
-        self.signature = (
-            f"Expression: "
-            f"{self.operation.name} "
-            f"{self.parameter1.value} "
-            f"{self.parameter2.value}"
-        )
-
+        self.signature = f"{self.operation.name} {self.parameter1.value} {self.parameter2.value}"
         print(self)
 
     def __repr__(self) -> str:
@@ -99,4 +93,6 @@ if __name__ == "__main__":
     bool2 = Expression_bool(False) # Create False obj
     expr = Expression_logic(Operations.AND, bool1, bool2)
     expr.run()
+    print("Result:", expr.value)
+    print("AST Tree:", expr.prefix())
     print(expr.value)

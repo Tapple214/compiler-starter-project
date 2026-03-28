@@ -88,22 +88,22 @@ class ASTParser(Parser):
     # Grammar Rule - AND
     @_('expr AND expr')
     def expr(self, p):
-        return p.expr0 and p.expr1
+        return Expression_logic(Operations.AND, p.expr0, p.expr1)
 
     # Grammar Rule - OR
     @_('expr OR expr')
     def expr(self, p):
-        return p.expr0 or p.expr1
+        return Expression_logic(Operations.OR, p.expr0, p.expr1)
 
     # base case - TRUE
     @_('TRUE')
     def expr(self, p) -> bool:
-        return True
+        return Expression_bool(True)
 
     # base case - FALSE
     @_('FALSE')
     def expr(self, p) -> bool:
-        return False
+        return Expression_bool(False)
         
 if __name__ == "__main__":
     lexer = MyLexer()
