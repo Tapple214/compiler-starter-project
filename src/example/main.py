@@ -54,9 +54,9 @@ class MainWindow(QMainWindow):
         expr = parser.parse(lexer.tokenize(input_text))
 
         if expr is None:
-            self.ui.label_eval.setText("Error")
-            self.ui.label_trans.setText("Error")
-            self.ui.label_tree.setText("Error")
+            self.ui.label_eval.setText("Err")
+            self.ui.label_trans.setText("Err")
+            self.ui.label_tree.setText("Err")
             return
 
         # Run evaluation
