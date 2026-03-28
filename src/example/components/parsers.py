@@ -70,14 +70,14 @@ from sly import Parser
 #         return int(p.NUMBER)
 
 
-from components.ast.statement import Expression, Expression_math, Expression_number, Operations
+from components.ast.statement import Expression, Expression_logic, Expression_bool, Operations
 class ASTParser(Parser):
     debugfile = 'parser.out'
     start = 'statement'
     # Get the token list from the lexer (required)
     tokens = MyLexer.tokens
     precedence = (
-        ('left', OR)
+        ('left', OR),
         ('left', AND), # higher priority
         )
 
