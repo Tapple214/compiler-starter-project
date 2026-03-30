@@ -26,7 +26,7 @@ class Expression(ABC):
 
     # Tree structure
     @abstractmethod
-    def tree_str(self, prefix="") -> str:
+    def tree_str(self, prefix="", is_last=True) -> str:
         pass
     
     # Prefix notation/expression structure 
@@ -47,7 +47,7 @@ class Expression_logic(Expression):
         # Checking Logic
         assert operation in Operations
 
-        # Create a children
+        # Create a child
         self.children = [self.parameter1, self.parameter2]
 
     # Binary node - Prefix notation/expression

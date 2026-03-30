@@ -14,7 +14,7 @@ class ASTParser(Parser):
         )
 
     @_('expr')
-    def statement(self, p) -> bool:
+    def statement(self, p) -> Expression:
         return p.expr
 
     # Grammar Rule - AND
@@ -29,12 +29,12 @@ class ASTParser(Parser):
 
     # base case - TRUE
     @_('TRUE')
-    def expr(self, p) -> bool:
+    def expr(self, p) -> Expression_bool:
         return Expression_bool(True)
 
     # base case - FALSE
     @_('FALSE')
-    def expr(self, p) -> bool:
+    def expr(self, p) -> Expression_bool:
         return Expression_bool(False)
         
 if __name__ == "__main__":
