@@ -1,0 +1,16 @@
+-e file:///Users/tapple/Desktop/PLC
+exceptiongroup==1.3.1
+iniconfig==2.3.0
+packaging==26.0
+pluggy==1.6.0
+pygments==2.19.2
+pyside6==6.10.2
+pyside6-addons==6.10.2
+pyside6-essentials==6.10.2
+pytest==9.0.2
+pytest-dependency==0.6.1
+setuptools==82.0.0
+shiboken6==6.10.2
+sly @ git+https://github.com/dabeaz/sly@09c2ba30df9143298ae5eef79d0baf23755d4cd9
+tomli==2.4.0
+typing-extensions==4.15.0
