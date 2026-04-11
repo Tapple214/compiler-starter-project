@@ -13,6 +13,7 @@ class Statement:
 class Operations(Enum):
     AND = "and"
     OR = "∨"
+    IMPLY = "→"
 
 # base class
 class Expression(ABC): 
@@ -88,6 +89,8 @@ class Expression_logic(Expression):
             self.value = self.parameter1.value and self.parameter2.value
         elif(self.operation == Operations.OR):
             self.value = self.parameter1.value or self.parameter2.value
+        elif(self.operation == Operations.IMPLY):
+            self.value = (not self.parameter1.value) or self.parameter2.value
         else:
             raise ValueError(f"{self.operation=} is not supported.")
         

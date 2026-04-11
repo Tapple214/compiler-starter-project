@@ -16,6 +16,7 @@ class MainWindow(QMainWindow):
 
     button_and:QPushButton
     button_or:QPushButton
+    button_imply:QPushButton
     button_equal:QPushButton
 
     input_text:QLineEdit
@@ -35,6 +36,7 @@ class MainWindow(QMainWindow):
         self.ui.button_f.clicked.connect(lambda: self.push("f"))
         self.ui.button_and.clicked.connect(lambda: self.push("and"))
         self.ui.button_or.clicked.connect(lambda: self.push("∨"))
+        self.ui.button_imply.clicked.connect(lambda: self.push("→"))
 
         self.ui.button_equal.clicked.connect(self.push_equal)
 

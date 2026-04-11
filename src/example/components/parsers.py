@@ -9,6 +9,7 @@ class ASTParser(Parser):
     # Get the token list from the lexer (required)
     tokens = MyLexer.tokens
     precedence = (
+        ('right', IMPLY),
         ('left', OR),
         ('left', AND), # higher priority
         )
@@ -26,6 +27,12 @@ class ASTParser(Parser):
     @_('expr OR expr')
     def expr(self, p):
         return Expression_logic(Operations.OR, p.expr0, p.expr1)
+
+    # Grammar Rule - IMPLY
+    @_('expr IMPLY expr')
+    def expr(self, p):
+        return Expression_logic(Operations.IMPLY, p.expr0, p.expr1)
+
 
     # base case - TRUE
     @_('TRUE')

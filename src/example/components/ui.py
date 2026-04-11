@@ -38,9 +38,17 @@ class Ui_MainWindow(object):
         self.button_t = QPushButton(self.centralwidget)
         self.button_t.setObjectName(u"button_t")
         self.button_t.setGeometry(QRect(160, 60, 141, 41))
+
+
         self.button_f = QPushButton(self.centralwidget)
         self.button_f.setObjectName(u"button_f")
         self.button_f.setGeometry(QRect(10, 60, 141, 41))
+
+        self.button_imply = QPushButton(self.centralwidget)
+        self.button_imply.setObjectName(u"button_imply")
+        self.button_imply.setGeometry(QRect(10, 125, 141, 41))
+
+
         self.button_and = QPushButton(self.centralwidget)
         self.button_and.setObjectName(u"button_and")
         self.button_and.setGeometry(QRect(159, 100, 141, 41))
@@ -59,9 +67,11 @@ class Ui_MainWindow(object):
         self.output_trans = QLabel(self.centralwidget)
         self.output_trans.setObjectName(u"output_trans")
         self.output_trans.setGeometry(QRect(100, 160, 57, 14))
+
         self.output_tree = QLabel(self.centralwidget)
         self.output_tree.setObjectName(u"output_tree")
         self.output_tree.setGeometry(QRect(10, 210, 57, 14))
+
         self.label_eval = QLabel(self.centralwidget)
         self.label_eval.setObjectName(u"label_eval")
         self.label_eval.setEnabled(True)
