@@ -102,7 +102,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.button_t.setText(QCoreApplication.translate("MainWindow", u"t", None))
         self.button_f.setText(QCoreApplication.translate("MainWindow", u"f", None))
-        self.button_and.setText(QCoreApplication.translate("MainWindow", u"\u2227", None))
+        self.button_and.setText(QCoreApplication.translate("MainWindow", u"and", None))
         self.input_label.setText(QCoreApplication.translate("MainWindow", u"Input:", None))
         self.output_eval.setText(QCoreApplication.translate("MainWindow", u"Eval:", None))
         self.button_equal.setText(QCoreApplication.translate("MainWindow", u"=", None))

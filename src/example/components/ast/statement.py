@@ -11,7 +11,7 @@ class Statement:
         
 # Unique identifiers
 class Operations(Enum):
-    AND = "∧"
+    AND = "and"
     OR = "∨"
 
 # base class

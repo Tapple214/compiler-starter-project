@@ -27,7 +27,7 @@ class MyLexer(Lexer):
 
     TRUE = r't'
     FALSE = r'f'
-    AND = r'∧'
+    AND = r'and'
     OR = r'∨'
 
     # Extra action for newlines
@@ -42,7 +42,7 @@ class MyLexer(Lexer):
 
 if __name__ == '__main__':
     # Write a simple test that only run when you execute this file
-    string_input:str = "t ∨ f ∧ f"
+    string_input:str = "t ∨ f and f"
     lex:Lexer = MyLexer()
     # assign type to `token`
     token: sly.lex.Token

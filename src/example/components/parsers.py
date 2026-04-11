@@ -39,7 +39,7 @@ class ASTParser(Parser):
         
 if __name__ == "__main__":
     lexer = MyLexer()
-    text = "t ∨ f ∧ t"
+    text = "t ∨ f and t"
     memory = Memory()
     parser = ASTParser()
     result = parser.parse(lexer.tokenize(text))
